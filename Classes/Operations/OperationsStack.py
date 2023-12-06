@@ -25,12 +25,7 @@ class OperationsStack:
 
             if option == 1:
                 value_input = input("\nEnter a value: ")
-
-                try:
-                    stack.push(value_input)
-                    print(f"Element '{value_input}' added to the stack.")
-                except ValueError:
-                    print(f"Could not convert '{value_input}' to type {type(stack).__name__}.")
+                stack.push(value_input)
             elif option == 2:
                 try:
                     popped_element = stack.pop()

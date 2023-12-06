@@ -9,123 +9,117 @@ class SimpleList(ImethodLists):
     def add(self, data):
         new_node = Node(data)
 
-        # case 1: List is empty
+        # Case 1: List is empty
         if self.is_empty():
             self.head = new_node
             return
 
-        # case 2: The data already exists
+        # Case 2: The data already exists
         if self.exist(data):
-            print(f"- [{data}] Ya existe en la lista")
+            print(f"- [{data}] already exists in the list")
             return
 
-        # case 3: Head has a data greater than that of the new node
+        # Case 3: Head has data greater than that of the new node
         if self.head.data > new_node.data:
             new_node.next = self.head
             self.head = new_node
             return
 
-        # case 3: The list is not empty
+        # Case 4: The list is not empty
         current_node = self.head
         while current_node.next is not None and current_node.next.data < new_node.data:
             current_node = current_node.next
         new_node.next = current_node.next
         current_node.next = new_node
-        pass
 
     def remove(self, data):
-        # case 1: List is empty
+        # Case 1: List is empty
         if self.is_empty():
-            print("// La lista esta vacia")
+            print("// The list is empty")
             return
 
-        # case 2: the head has the courage to remove
+        # Case 2: The head has the courage to remove
         if self.head.data == data:
-            print(f"- Dato[{data}] Se elimino de la lista")
+            print(f"- Data[{data}] has been removed from the list")
             self.head = self.head.next
             return
 
-        # case 3: Any of the following nodes has the data to be removed
+        # Case 3: Any of the following nodes has the data to be removed
         current_node = self.head
         while current_node.next is not None and current_node.next.data < data:
             current_node = current_node.next
 
-        # case 4: The node to be removed was found
+        # Case 4: The node to be removed was found
         if current_node.next.data == data:
-            print(f"- Dato[{data}] Se elimino de la lista")
+            print(f"- Data[{data}] has been removed from the list")
             current_node.next = current_node.next.next
             return
 
-        # case 5: Node not found
-        print(f"- Dato[{data}] No Existe en la lista")
-        pass
+        # Case 5: Node not found
+        print(f"- Data[{data}] does not exist in the list")
 
     def exist(self, data):
-        # case 1: List is empty
+        # Case 1: List is empty
         if self.is_empty():
-            print("// La lista esta vacía")
+            print("// The list is empty")
             return False
 
-        # case 2: The 'head' node contains the data
+        # Case 2: The 'head' node contains the data
         if self.head.data == data:
             return True
 
-        # case 3: Any node in the list can have the data
+        # Case 3: Any node in the list can have the data
         current_node = self.head
         while current_node.next is not None and current_node.next.data <= data:
             current_node = current_node.next
 
-        # case 4: The data already exists in the list
+        # Case 4: The data already exists in the list
         if current_node.data == data:
             return True
 
-        # case 5: We reached the end and found nothing
+        # Case 5: We reached the end and found nothing
         return False
-        pass
 
     def search(self, data):
-        # case 1: List is empty
+        # Case 1: List is empty
         if self.is_empty():
-            print("// La lista esta vacía")
+            print("// The list is empty")
             return False
 
-        # case 2: The 'head' node contains the data
+        # Case 2: The 'head' node contains the data
         if self.head.data == data:
-            print(f"- Dato[{data}] Existe en la lista")
+            print(f"- Data[{data}] exists in the list")
             return
 
-        # case 3: Any node in the list can have the data
+        # Case 3: Any node in the list can have the data
         current_node = self.head
         while current_node.next is not None and current_node.next.data <= data:
             current_node = current_node.next
 
-        # case 4: The data already exists in the list
+        # Case 4: The data already exists in the list
         if current_node.data == data:
-            print(f"- Dato[{data}] Existe en la lista")
+            print(f"- Data[{data}] exists in the list")
             return
 
-        # case 5: We reached the end and found nothing
-        print(f"- Dato[{data}] No Existe en la lista")
-        return
-        pass
+        # Case 5: We reached the end and found nothing
+        print(f"- Data[{data}] does not exist in the list")
 
     def show(self):
-        # case 1: List is empty.
+        # Case 1: List is empty
         if self.is_empty():
-            print("// La lista esta vacía")
+            print("// The list is empty")
             return
 
-        # case 2: List is not empty or is not None
-        print("=== Mi lista simple ===")
+        # Case 2: List is not empty or is not None
+        print("=== My simple list ===")
         i = 0
         current_node = self.head
         while True:
-            print(f"- Nodo[{i}] y dato: {current_node.data}")
+            print(f"- Node[{i}] and data: {current_node.data}")
             current_node = current_node.next
             i += 1
             if current_node is None:
                 break
-        pass
 
     def show_reverse(self):
         # Case 1: If the list is empty
@@ -146,12 +140,9 @@ class SimpleList(ImethodLists):
         for node in stack_array:
             i -= 1
             print(f"- Node[{i}] and data: {node}")
-        pass
 
     def is_empty(self):
         return self.head is None
-        pass
 
     def clear(self):
         self.head = None
-        pass

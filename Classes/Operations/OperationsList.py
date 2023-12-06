@@ -125,9 +125,9 @@ class OperationsList:
             opt = int(input() or 0)
 
             if opt == 1:
-                OperationsList.a_list_operation(SimpleList())  # Crear una instancia de SimpleList
+                OperationsList.a_list_operation(SimpleList())
             elif opt == 2:
-                OperationsList.a_list_operation(CircleLinkedList())  # Crear una instancia de Circle_LinkedList
+                OperationsList.a_list_operation(CircleLinkedList())
             elif opt == 3:
                 OperationsList.a_list_operation(DoublyLinkedList())
             elif opt == 4:

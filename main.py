@@ -8,5 +8,3 @@ if __name__ == '__main__':
     df = OperationsGraph()
     df.menu_graphs()
 
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/

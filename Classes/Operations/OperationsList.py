@@ -141,4 +141,4 @@ class OperationsList:
 
     @staticmethod
     def deffault():
-        print("Invalid input. Please enter a valid number.")
+        input("Invalid input. Please enter a valid number.")

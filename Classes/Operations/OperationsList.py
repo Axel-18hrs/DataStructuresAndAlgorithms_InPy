@@ -115,7 +115,8 @@ class OperationsList:
             elif opti == 7:
                 return
 
-    def menu_list(self):
+    @staticmethod
+    def menu_list():
         while True:
             print("Types of lists: \n"
                   + "1. Simple \n"

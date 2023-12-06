@@ -142,7 +142,7 @@ class CircleLinkedList(ImethodLists):
         temp_arr = []
         current_node = self.head
         i = 0
-        while current_node is not None:
+        while current_node.next is not self.head:
             i += 1
             temp_arr.append(current_node.data)
             current_node = current_node.next

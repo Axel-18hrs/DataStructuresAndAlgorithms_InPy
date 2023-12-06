@@ -4,6 +4,7 @@ from Classes.Lists.Doubly_LinkedList import DoublyLinkedList
 from Classes.Lists.DoublyCircle_LinkedList import DoublyCircleLinkedList
 import random
 
+
 class OptionLists:
     Add = 1
     Delete = 2
@@ -11,6 +12,7 @@ class OptionLists:
     Show = 4
     ShowRevers = 5
     Clear = 6
+
 
 class OperationsList:
     r = random.Random()

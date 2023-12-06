@@ -1,12 +1,11 @@
-from re import T
-from typing import Optional
+from Interfaces.ImethodStacks import ImethodStacks
 
 
-class DynamicStack:
+class DynamicStack(ImethodStacks):
     def __init__(self):
         self.stack_list = []
 
-    def push(self, item: Optional[T]):
+    def push(self, item):
         self.stack_list.append(item)
 
     def pop(self):

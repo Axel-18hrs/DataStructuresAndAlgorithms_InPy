@@ -1,6 +1,7 @@
 from Interfaces.ImethodStacks import ImethodStacks
 
-class StaticStack:
+
+class StaticStack(ImethodStacks):
     def __init__(self, capacity):
         self.capacity = capacity
         self.elements = [None] * capacity
@@ -28,7 +29,7 @@ class StaticStack:
             print("The stack is empty. No elements to peek.")
             return None
 
-    def __len__(self):
+    def count(self):
         return self.count
 
     def is_empty(self):

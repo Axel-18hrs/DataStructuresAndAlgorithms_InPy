@@ -1,6 +1,5 @@
 from typing import List, Tuple, Dict
-from collections import deque
-
+from collections import deque, defaultdict
 
 class DirectedGraph:
     def __init__(self):
@@ -108,3 +107,4 @@ class DirectedGraph:
 
         print("BFS levels: " + ", ".join(f"{key}:{value}" for key, value in levels.items()))
         return levels
+    

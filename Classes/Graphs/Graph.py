@@ -104,3 +104,8 @@ class Graph:
             matrix_strings.append(row.rstrip())
 
         return matrix_strings
+
+    def get_all_vertices(self):
+        vertices = list(self.graph.keys())
+        print("All vertices in the graph: " + ", ".join(map(str, vertices)))
+        return vertices

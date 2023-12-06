@@ -1,111 +1,112 @@
-from collections import defaultdict, deque
+from typing import List, Tuple, Dict
+from collections import deque
 
 
 class Graph:
     def __init__(self):
-        self.graph = defaultdict(list)
-        self.weights = defaultdict(int)
+        self.adjacency_list = {}
 
     def add_vertex(self, vertex):
-        if vertex not in self.graph:
-            self.graph[vertex] = []
-
-    def add_edge(self, source, destination, weight):
-        if source in self.graph and destination in self.graph:
-            self.graph[source].append((destination, weight))
-
-    def remove_edge(self, source, destination):
-        if source in self.graph:
-            self.graph[source] = [(neighbor, weight) for neighbor, weight in self.graph[source] if not neighbor == destination]
-
-    def get_neighbors(self, vertex):
-        return self.graph.get(vertex, [])
-
-    def get_vertices(self):
-        return list(self.graph.keys())
+        if vertex not in self.adjacency_list:
+            self.adjacency_list[vertex] = []
+            print(f"Vertex {vertex} added to the graph.")
+            return
+        print(f"Vertex {vertex} already exists in the graph.")
 
     def remove_vertex(self, vertex):
-        if vertex in self.graph:
-            del self.graph[vertex]
+        if vertex in self.adjacency_list:
+            del self.adjacency_list[vertex]
+            print(f"Vertex {vertex} removed from the graph.")
 
-            for key in self.graph:
-                self.graph[key] = [(neighbor, weight) for neighbor, weight in self.graph[key] if not neighbor == vertex]
+            for other_vertex in self.adjacency_list:
+                self.adjacency_list[other_vertex] = [neighbor for neighbor in self.adjacency_list[other_vertex] if neighbor != vertex]
+            return
 
-    def dfs(self, start, goal):
-        if start not in self.graph:
-            print(f"The starting vertex {start} is not present in the graph.")
-            return [], []
+        print(f"Vertex {vertex} does not exist in the graph.")
 
-        stack = deque()
-        parents = {}
-        self.weights.clear()
+    def add_edge(self, vertex_start, vertex_end):
+        if vertex_start in self.adjacency_list and vertex_end in self.adjacency_list:
+            self.adjacency_list[vertex_start].append(vertex_end)
+            self.adjacency_list[vertex_end].append(vertex_start)  # Si el grafo es no dirigido
+            print(f"Edge added between {vertex_start} and {vertex_end}.")
+            return
 
-        stack.append(start)
-        parents[start] = None
+        print(f"Vertices {vertex_start} or {vertex_end} do not exist in the graph.")
 
-        steps = []
+    def remove_edge(self, vertex_start, vertex_end):
+        if vertex_start in self.adjacency_list and vertex_end in self.adjacency_list:
+            self.adjacency_list[vertex_start].remove(vertex_end)
+            self.adjacency_list[vertex_end].remove(vertex_start)  # Si el grafo es no dirigido
+            print(f"Edge removed between {vertex_start} and {vertex_end}.")
+            return
 
-        while stack:
-            current_vertex = stack.pop()
-            current_step = [current_vertex]
+        print(f"Vertices {vertex_start} or {vertex_end} do not exist in the graph.")
 
-            for neighbor, weight in self.graph[current_vertex]:
-                if neighbor not in parents:
-                    stack.append(neighbor)
-                    parents[neighbor] = current_vertex
-                    self.weights[neighbor] = weight
+    def vertex_exists(self, vertex):
+        exists = vertex in self.adjacency_list
+        print(f"Vertex {vertex} exists in the graph: {exists}.")
+        return exists
 
-                    # Add the vertex to the current step
-                    current_step.append(neighbor)
-                else:
-                    if weight < self.weights[neighbor]:
-                        self.weights[neighbor] = weight
-                        parents[neighbor] = current_vertex
+    def edge_exists(self, vertex_start, vertex_end):
+        exists = vertex_start in self.adjacency_list and vertex_end in self.adjacency_list[vertex_start]
+        print(f"Edge between {vertex_start} and {vertex_end} exists: {exists}.")
+        return exists
 
-            # Add the current step to the list of steps
-            steps.append(list(current_step))
-
-        best_path = self.build_path(parents, goal)
-        return best_path, steps
-
-    def print_dfs_steps(self, steps):
-        print("Depth-First Search (DFS) Steps:")
-        for i, step in enumerate(steps):
-            print(f"Step {i + 1}: { ' -> '.join(map(str, step)) }")
-
-    def build_path(self, parents, goal):
-        path = []
-
-        current = goal
-        while current is not None:
-            path.insert(0, current)
-
-            # Check if the key is present in the dictionary
-            if current in parents:
-                current = parents[current]
-            else:
-                # Handle the case where the key is not present
-                break
-
-        return path
-
-    def get_adjacency_matrix(self):
-        matrix_strings = []
-        num_vertices = len(self.graph)
-
-        header = f"   {' '.join(map(str, self.graph.keys()))}"
-        matrix_strings.append(header)
-
-        for vertex in self.graph.keys():
-            row = f"{vertex} "
-            for other_vertex in self.graph.keys():
-                has_edge = any(edge[0] == other_vertex for edge in self.graph[vertex])
-                row += "1 " if has_edge else "0 "
-            matrix_strings.append(row.rstrip())
-
-        return matrix_strings
-
-    def get_all_vertices(self):
-        vertices = list(self.graph.keys())
+    def get_all_vertices(self) -> List:
+        vertices = list(self.adjacency_list.keys())
         print("All vertices in the graph: " + ", ".join(map(str, vertices)))
         return vertices
+
+    def get_all_edges(self) -> List[Tuple]:
+        edges = [(vertex, neighbor) for vertex in self.adjacency_list for neighbor in self.adjacency_list[vertex]]
+        print("All edges in the graph: " + ", ".join(map(str, edges)))
+        return edges
+
+    def traverse_bfs(self, start_vertex) -> List:
+        visited = []
+        queue = deque()
+
+        if start_vertex not in self.adjacency_list:
+            print(f"Vertex {start_vertex} does not exist in the graph.")
+            return visited
+
+        visited.append(start_vertex)
+        queue.append(start_vertex)
+
+        while queue:
+            current_vertex = queue.popleft()
+
+            for neighbor in self.adjacency_list[current_vertex]:
+                if neighbor not in visited:
+                    visited.append(neighbor)
+                    queue.append(neighbor)
+
+        print("BFS traversal result: " + ", ".join(map(str, visited)))
+        return visited
+
+    def calculate_degree(self, vertex) -> int:
+        out_degree = len(self.adjacency_list.get(vertex, []))
+        print(f"Degree of vertex {vertex}: {out_degree}.")
+        return out_degree
+
+    def calculate_bfs_levels(self, start_vertex) -> Dict:
+        levels = {}
+        queue = deque()
+
+        if start_vertex not in self.adjacency_list:
+            print(f"Vertex {start_vertex} does not exist in the graph.")
+            return levels
+
+        levels[start_vertex] = 0
+        queue.append(start_vertex)
+
+        while queue:
+            current_vertex = queue.popleft()
+
+            for neighbor in self.adjacency_list[current_vertex]:
+                if neighbor not in levels:
+                    levels[neighbor] = levels[current_vertex] + 1
+                    queue.append(neighbor)
+
+        print("BFS levels: " + ", ".join(f"{key}:{value}" for key, value in levels.items()))
+        return levels

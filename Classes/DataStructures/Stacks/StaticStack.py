@@ -1,4 +1,4 @@
-from Interfaces.ImethodStacks import ImethodStacks
+from Interfaces.DataStructures.ImethodStacks import ImethodStacks
 
 
 class StaticStack(ImethodStacks):

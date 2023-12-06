@@ -1,4 +1,4 @@
-from Classes.Nodes.BinaryNode import BinaryNode
+from Classes.DataStructures.Nodes.BinaryNode import BinaryNode
 
 
 class BinaryTree:

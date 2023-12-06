@@ -1,4 +1,4 @@
-from Classes.Tree.BinaryTree import BinaryTree
+from Classes.DataStructures.Tree.BinaryTree import BinaryTree
 
 
 class OperationsTree:

@@ -1,8 +1,8 @@
-from Classes.Operations.OperationsList import OperationsList
-from Classes.Operations.OperationsStack import OperationsStack
-from Classes.Operations.OperationsQueue import OperationsQueue
-from Classes.Operations.OperationsGraph import OperationsGraph
-from Classes.Operations.OperationsTree import OperationsTree
+from Classes.DataStructures.Operations.OperationsList import OperationsList
+from Classes.DataStructures.Operations.OperationsStack import OperationsStack
+from Classes.DataStructures.Operations.OperationsQueue import OperationsQueue
+from Classes.DataStructures.Operations.OperationsGraph import OperationsGraph
+from Classes.DataStructures.Operations.OperationsTree import OperationsTree
 
 
 if __name__ == '__main__':

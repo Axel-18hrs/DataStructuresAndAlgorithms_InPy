@@ -1,5 +1,5 @@
-from Classes.Graphs.Graph import Graph
-from Classes.Graphs.DirectedGraph import DirectedGraph
+from Classes.DataStructures.Graphs.Graph import Graph
+from Classes.DataStructures.Graphs.DirectedGraph import DirectedGraph
 
 
 class OperationsGraph:

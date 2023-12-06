@@ -1,7 +1,7 @@
-from Classes.Queues.RegularQueue import RegularQueue
-from Classes.Queues.DoubleQueue import DoubleQueue
-from Classes.Queues.PriorityQueue import PriorityQueue
-from Classes.Queues.CircularQueue import CircularQueue
+from Classes.DataStructures.Queues.RegularQueue import RegularQueue
+from Classes.DataStructures.Queues.DoubleQueue import DoubleQueue
+from Classes.DataStructures.Queues.PriorityQueue import PriorityQueue
+from Classes.DataStructures.Queues.CircularQueue import CircularQueue
 
 
 class OperationsQueue:

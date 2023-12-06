@@ -1,5 +1,5 @@
-from Classes.Stacks.StaticStack import StaticStack
-from Classes.Stacks.DynamicStack import DynamicStack
+from Classes.DataStructures.Stacks.StaticStack import StaticStack
+from Classes.DataStructures.Stacks.DynamicStack import DynamicStack
 
 
 class OperationsStack:

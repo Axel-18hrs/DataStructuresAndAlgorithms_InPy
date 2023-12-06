@@ -1,7 +1,7 @@
-from Classes.Lists.LinkedList import SimpleList
-from Classes.Lists.Circle_LinkedList import CircleLinkedList
-from Classes.Lists.Doubly_LinkedList import DoublyLinkedList
-from Classes.Lists.DoublyCircle_LinkedList import DoublyCircleLinkedList
+from Classes.DataStructures.Lists.LinkedList import SimpleList
+from Classes.DataStructures.Lists.Circle_LinkedList import CircleLinkedList
+from Classes.DataStructures.Lists.Doubly_LinkedList import DoublyLinkedList
+from Classes.DataStructures.Lists.DoublyCircle_LinkedList import DoublyCircleLinkedList
 import random
 
 

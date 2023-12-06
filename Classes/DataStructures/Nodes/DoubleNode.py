@@ -1,4 +1,4 @@
-from Classes.Nodes.Node import Node
+from Classes.DataStructures.Nodes.Node import Node
 
 
 class DoubleNode(Node):

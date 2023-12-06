@@ -1,5 +1,5 @@
-from Interfaces.ImethodLists import ImethodLists
-from Classes.Nodes.Node import Node
+from Interfaces.DataStructures.ImethodLists import ImethodLists
+from Classes.DataStructures.Nodes.Node import Node
 
 
 class SimpleList(ImethodLists):

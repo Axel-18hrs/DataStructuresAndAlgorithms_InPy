@@ -1,9 +1,12 @@
-from Classes.Queues
-from Classes.ImethodQueues import ImethodQueues
+from Classes.Queues.RegularQueue import RegularQueue
+from Classes.Queues.DoubleQueue import DoubleQueue
+from Classes.Queues.PriorityQueue import PriorityQueue
+from Classes.Queues.CircularQueue import CircularQueue
+
 
 class OperationsQueue:
     @staticmethod
-    def all_queue_operations(queue: ImethodQueues):
+    def all_queue_operations(queue):
         queue_type_message = (
             "Regular" if isinstance(queue, RegularQueue)
             else "Double" if isinstance(queue, DoubleQueue)
@@ -41,9 +44,7 @@ class OperationsQueue:
 
                     if option == 2:
                         try:
-                            print("Enter a value to enqueue at the rear:")
-                            converted_value = OperationsQueue.convert_input_to_type(input(), queue)
-                            queue.enqueue_rear(converted_value)
+                            queue.enqueue_rear(input("Enter a value to enqueue at the rear:"))
                         except ValueError:
                             OperationsQueue.default()
                         continue
@@ -53,9 +54,7 @@ class OperationsQueue:
                         continue
 
                 try:
-                    print("Enter a value to enqueue:")
-                    converted_value = OperationsQueue.convert_input_to_type(input(), queue)
-                    queue.enqueue(converted_value)
+                    queue.enqueue(input("Enter a value to enqueue:"))
                 except ValueError:
                     OperationsQueue.default()
 

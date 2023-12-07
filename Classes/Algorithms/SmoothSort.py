@@ -9,57 +9,31 @@ class SmoothSort(ImethodAlgorithms):
         self.heap = arr
         n = len(arr)
 
-        for i in range(n):
-            self.heapify(i)
+        for i in range((n-1)//2, -1, -1):
+            self.sift_down(i, n - 1)
 
         for i in range(n - 1, 0, -1):
             self.swap(0, i)
             self.sift_down(0, i - 1)
 
-    def heapify(self, i):
-        n = len(self.heap)
-        k = 1
-        j = i - 1
+    def sift_down(self, root, end):
+        left_child = 2 * root + 1
+        while left_child <= end:
+            right_child = left_child + 1
+            swap_index = root
 
-        while j >= 0 and self.heap[i] != self.heap[j]:
-            if self.heap[i] > self.heap[j]:
-                self.swap(i, j)
-                self.sift_down(k, i - 1)
+            if self.heap[swap_index] < self.heap[left_child]:
+                swap_index = left_child
 
-            i = j
-            j = self.right_child(i, k)
-            k += 1
+            if right_child <= end and self.heap[swap_index] < self.heap[right_child]:
+                swap_index = right_child
 
-    def sift_down(self, l, r):
-        while l <= r:
-            k = 2
-            i = r
-            j = r - l
-
-            while j >= 0 and self.heap[i] != self.heap[j]:
-                if self.heap[i] > self.heap[j]:
-                    self.swap(i, j)
-                    self.sift_down(k, i - 1)
-
-                i = j
-                j = self.right_child(i, k)
-                k += 1
-
-            l -= 1
-
-    def right_child(self, i, k):
-        return i - self.fibonacci(k - 1) + self.fibonacci(k - 2)
-
-    def fibonacci(self, n):
-        if n <= 1:
-            return n
-
-        a, b = 0, 1
-
-        for _ in range(2, n + 1):
-            a, b = b, a + b
-
-        return b
+            if swap_index == root:
+                return
+            else:
+                self.swap(root, swap_index)
+                root = swap_index
+                left_child = 2 * root + 1
 
     def swap(self, i, j):
         self.heap[i], self.heap[j] = self.heap[j], self.heap[i]

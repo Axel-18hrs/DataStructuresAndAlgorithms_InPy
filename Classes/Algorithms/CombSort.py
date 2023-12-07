@@ -1,6 +1,5 @@
 from Interfaces.Algorithms.ImethodAlgorithms import ImethodAlgorithms
 
-
 class CombSort(ImethodAlgorithms):
     def __init__(self):
         pass
@@ -26,11 +25,6 @@ class CombSort(ImethodAlgorithms):
             # Realizar comparaciones y swaps
             for i in range(n - gap):
                 if arr[i] > arr[i + gap]:
-                    self.swap(arr, i, i + gap)
+                    # Intercambio múltiple de Python
+                    arr[i], arr[i + gap] = arr[i + gap], arr[i]
                     swapped = True
-
-    @staticmethod
-    def swap(arr, a, b):
-        temp = arr[a]
-        arr[a] = arr[b]
-        arr[b] = temp

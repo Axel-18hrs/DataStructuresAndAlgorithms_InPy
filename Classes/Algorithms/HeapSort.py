@@ -15,7 +15,7 @@ class HeapSort(ImethodAlgorithms):
         # Extraer elementos uno por uno del heap
         for i in range(n - 1, 0, -1):
             # Mover la raíz actual al final
-            self.swap(arr, 0, i)
+            arr[0], arr[i] = arr[i], arr[0]
 
             # Llamar a heapify en el subárbol reducido
             self.heapify(arr, i, 0)
@@ -36,11 +36,8 @@ class HeapSort(ImethodAlgorithms):
 
         # Si el mayor no es la raíz
         if largest != i:
-            HeapSort.swap(arr, i, largest)
+            # Intercambio múltiple de Python
+            arr[i], arr[largest] = arr[largest], arr[i]
 
             # Recursivamente heapify el subárbol afectado
             HeapSort.heapify(arr, n, largest)
-
-    @staticmethod
-    def swap(arr, i, j):
-        arr[i], arr[j] = arr[j], arr[i]

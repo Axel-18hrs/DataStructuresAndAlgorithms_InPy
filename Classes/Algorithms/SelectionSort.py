@@ -9,20 +9,11 @@ class SelectionSort(ImethodAlgorithms):
         n = len(arr)
 
         for i in range(n - 1):
-            # Find the index of the minimum element in the unsorted subarray
+            # Encontrar el índice del elemento mínimo en el subarreglo no ordenado
             min_index = i
             for j in range(i + 1, n):
                 if arr[j] < arr[min_index]:
                     min_index = j
 
-            # Swap the found minimum element with the first element of the unsorted subarray
-            self.swap(arr, i, min_index)
-
-    def sort_double(self, arr):
-        pass  # Implement sorting for double array if needed
-
-    @staticmethod
-    def swap(arr, a, b):
-        temp = arr[a]
-        arr[a] = arr[b]
-        arr[b] = temp
+            # Intercambiar el elemento mínimo encontrado con el primer elemento del subarreglo no ordenado
+            arr[i], arr[min_index] = arr[min_index], arr[i]

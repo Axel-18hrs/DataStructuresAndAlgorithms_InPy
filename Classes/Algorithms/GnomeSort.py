@@ -15,9 +15,6 @@ class GnomeSort(ImethodAlgorithms):
             if arr[index] >= arr[index - 1]:
                 index += 1
             else:
-                self.swap(arr, index, index - 1)
+                # Intercambio múltiple de Python
+                arr[index], arr[index - 1] = arr[index - 1], arr[index]
                 index -= 1
-
-    @staticmethod
-    def swap(arr, a, b):
-        arr[a], arr[b] = arr[b], arr[a]

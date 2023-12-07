@@ -8,7 +8,7 @@ class BinarytreeNode:
         self.right = None
 
 
-class Binarytreesort(ImethodAlgorithms):
+class BinaryTreeSort(ImethodAlgorithms):
     def __init__(self):
         self.root = None
 

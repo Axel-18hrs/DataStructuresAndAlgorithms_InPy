@@ -15,7 +15,7 @@ class OperationsTree:
                   + "5. PreOrder Traversal\n"
                   + "6. PostOrder Traversal\n"
                   + "7. InOrder Traversal\n"
-                  + "8. Exit\n")
+                  + "0. Exit\n")
 
             try:
                 choice = int(input())
@@ -23,7 +23,7 @@ class OperationsTree:
                 OperationsTree.default()
                 continue
 
-            if choice == 8:
+            if choice == 0:
                 return
 
             if choice == 1:

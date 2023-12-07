@@ -15,7 +15,7 @@ class OperationsStack:
                   + "3. Peek \n"
                   + "4. Count \n"
                   + "5. Show Stack \n"
-                  + "6. Exit \n")
+                  + "0. Exit \n")
 
             try:
                 option = int(input())
@@ -42,8 +42,8 @@ class OperationsStack:
                 print(f"Number of elements in the stack: {stack.count}")
             elif option == 5:
                 stack.show()
-            elif option == 6:
-                break
+            elif option == 0:
+                return
             else:
                 OperationsStack.default()
 
@@ -56,7 +56,7 @@ class OperationsStack:
             print("Types of stacks: \n"
                   + "1. Static stack \n"
                   + "2. Dynamic stack \n"
-                  + "3. Exit \n")
+                  + "0. Exit \n")
 
             try:
                 option = int(input())
@@ -76,8 +76,8 @@ class OperationsStack:
             elif option == 2:
                 stack = DynamicStack()
                 OperationsStack.all_stack_operations(stack)
-            elif option == 3:
-                break
+            elif option == 0:
+                return
             else:
                 OperationsStack.default()
 

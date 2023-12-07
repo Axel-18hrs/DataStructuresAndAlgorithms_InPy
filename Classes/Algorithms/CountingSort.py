@@ -1,7 +1,7 @@
 from Interfaces.Algorithms.ImethodAlgorithms import ImethodAlgorithms
 
 
-class CountinSort(ImethodAlgorithms):
+class CountingSort(ImethodAlgorithms):
     def __init__(self):
         pass
 

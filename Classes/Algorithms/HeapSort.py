@@ -1,7 +1,7 @@
 from Interfaces.Algorithms.ImethodAlgorithms import ImethodAlgorithms
 
 
-class Heapsort(ImethodAlgorithms):
+class HeapSort(ImethodAlgorithms):
     def __init__(self):
         pass
 
@@ -36,10 +36,10 @@ class Heapsort(ImethodAlgorithms):
 
         # Si el mayor no es la raíz
         if largest != i:
-            Heapsort.swap(arr, i, largest)
+            HeapSort.swap(arr, i, largest)
 
             # Recursivamente heapify el subárbol afectado
-            Heapsort.heapify(arr, n, largest)
+            HeapSort.heapify(arr, n, largest)
 
     @staticmethod
     def swap(arr, i, j):

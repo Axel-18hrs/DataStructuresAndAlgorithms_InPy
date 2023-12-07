@@ -63,7 +63,7 @@ class OperationsList:
                   + "4. Show list \n"
                   + "5. Show reverse \n"
                   + "6. Clear \n"
-                  + "7. Exit \n")
+                  + "0. Exit \n")
 
             opti = int(input() or 0)
 
@@ -112,7 +112,7 @@ class OperationsList:
                 custom_list.clear()
                 continue
 
-            elif opti == 7:
+            elif opti == 0:
                 return
 
     @staticmethod
@@ -123,7 +123,7 @@ class OperationsList:
                   + "2. Circular \n"
                   + "3. Doubly linked \n"
                   + "4. Circular Doubly linked \n"
-                  + "5. Exit \n")
+                  + "0. Exit \n")
 
             opt = int(input() or 0)
 
@@ -135,7 +135,7 @@ class OperationsList:
                 OperationsList.a_list_operation(DoublyLinkedList())
             elif opt == 4:
                 OperationsList.a_list_operation(DoublyCircleLinkedList())
-            elif opt == 5:
+            elif opt == 0:
                 return
             else:
                 OperationsList.deffault()

@@ -22,7 +22,7 @@ class OperationsQueue:
                   + "2. Dequeue value \n"
                   + "3. Peek value\n"
                   + "4. Display \n"
-                  + "5. Exit \n")
+                  + "0. Exit \n")
 
             try:
                 choice = int(input())
@@ -105,7 +105,7 @@ class OperationsQueue:
             elif choice == 4:
                 queue.display()
 
-            elif choice == 5:
+            elif choice == 0:
                 return
 
             else:
@@ -122,7 +122,7 @@ class OperationsQueue:
                   + "2. Doubly queue \n"
                   + "3. Priority queue \n"
                   + "4. Circular queue \n"
-                  + "5. Exit \n")
+                  + "0. Exit \n")
 
             try:
                 opt = int(input())
@@ -145,7 +145,7 @@ class OperationsQueue:
                     continue
 
                 OperationsQueue.all_queue_operations(CircularQueue(length))
-            elif opt == 5:
+            elif opt == 0:
                 return
             else:
                 OperationsQueue.default()

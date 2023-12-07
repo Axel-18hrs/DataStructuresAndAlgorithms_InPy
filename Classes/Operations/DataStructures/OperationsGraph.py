@@ -20,7 +20,7 @@ class OperationsGraph:
                   + "9. Traverse BFS\n"
                   + "10. Calculate Vertex Degree\n"
                   + "11. Calculate BFS Levels\n"
-                  + "12. Exit\n")
+                  + "0. Exit\n")
 
             try:
                 choice = int(input())
@@ -75,7 +75,7 @@ class OperationsGraph:
                 start_vertex_bfs_levels = input("Enter starting vertex for BFS levels: ")
                 graph.calculate_bfs_levels(start_vertex_bfs_levels)
 
-            elif choice == 12:
+            elif choice == 0:
                 return
 
             else:
@@ -89,7 +89,7 @@ class OperationsGraph:
             print("Types of graphs: \n"
                   + "1. Graph \n"
                   + "2. Directed graph \n"
-                  + "3. Exit \n")
+                  + "0. Exit \n")
 
             try:
                 opt = int(input())
@@ -101,7 +101,7 @@ class OperationsGraph:
                 OperationsGraph.all_operation_graph(Graph())
             elif opt == 2:
                 OperationsGraph.all_operation_graph(DirectedGraph())
-            elif opt == 3:
+            elif opt == 0:
                 return
             else:
                 OperationsGraph.deffault()

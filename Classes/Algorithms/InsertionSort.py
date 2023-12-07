@@ -1,7 +1,7 @@
 from Interfaces.Algorithms.ImethodAlgorithms import ImethodAlgorithms
 
 
-class Insertionsort(ImethodAlgorithms):
+class InsertionSort(ImethodAlgorithms):
     def __init__(self):
         pass
 

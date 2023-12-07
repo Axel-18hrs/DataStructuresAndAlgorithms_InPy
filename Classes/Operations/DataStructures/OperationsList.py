@@ -97,7 +97,7 @@ class OperationsList:
 
             elif opti == OptionLists.Search:
                 print("Enter a value to search: ")
-                custom_list.search(input())
+                custom_list.search(input("Enter your choice: "))
                 continue
 
             elif opti == OptionLists.Show:

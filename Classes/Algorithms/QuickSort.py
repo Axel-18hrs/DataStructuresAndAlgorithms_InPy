@@ -13,10 +13,8 @@ class QuickSort(ImethodAlgorithms):
     def sort(self, arr):
         self.quicksort(arr, 0, len(arr) - 1)
 
-    def swap(self, index_one, index_two):
-        temporary = index_one
-        index_one = index_two
-        index_two = temporary
+    def swap(self, arr, index_one, index_two):
+        arr[index_one], arr[index_two] = arr[index_two], arr[index_one]
 
     def partition(self, array, first_index, last_index):
         self._contain_partition += 1
@@ -30,7 +28,7 @@ class QuickSort(ImethodAlgorithms):
         else:
             index_pivot = self._random.randint(first_index, last_index)
 
-        self.swap(array[first_index], array[index_pivot])
+        self.swap(array, first_index, index_pivot)
 
         self.print_swap(array, first_index, index_pivot)
         self._contain_exchange += 1
@@ -46,13 +44,13 @@ class QuickSort(ImethodAlgorithms):
                 right -= 1
             if right < left:
                 break
-            self.swap(array[left], array[right])
+            self.swap(array, left, right)
             self.print_swap(array, left, right)
             self._contain_exchange += 1
             left += 1
             right -= 1
 
-        self.swap(array[first_index], array[right])
+        self.swap(array, first_index, right)
         self.print_swap(array, first_index, right)
         self._contain_exchange += 1
         return right

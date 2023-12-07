@@ -6,7 +6,7 @@ from Classes.Operations.DataStructures.OperationsTree import OperationsTree
 from Classes.Operations.Algorithms.OperationsAlgorithm import OperationsAlgorithm
 
 
-class OperationsMain:
+class OperationMain:
 
     @staticmethod
     def menu_DataStructures():
@@ -59,7 +59,7 @@ class OperationsMain:
             if num == 1:
                 OperationsAlgorithm.menu_algorithms()
             elif num == 2:
-                OperationsMain.menu_DataStructures()
+                OperationMain.menu_DataStructures()
             elif num == 0:
                 return
 

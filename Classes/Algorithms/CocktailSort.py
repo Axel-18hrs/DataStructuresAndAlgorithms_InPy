@@ -1,6 +1,5 @@
 from Interfaces.Algorithms.ImethodAlgorithms import ImethodAlgorithms
 
-
 class CocktailSort(ImethodAlgorithms):
     def __init__(self):
         pass
@@ -15,11 +14,12 @@ class CocktailSort(ImethodAlgorithms):
         end = n - 1
 
         while swapped:
-            # Move from left to right
+            # Mover de izquierda a derecha
             swapped = False
             for i in range(start, end):
                 if arr[i] > arr[i + 1]:
-                    self.swap(arr, i, i + 1)
+                    # Intercambio múltiple de Python
+                    arr[i], arr[i + 1] = arr[i + 1], arr[i]
                     swapped = True
 
             if not swapped:
@@ -27,17 +27,12 @@ class CocktailSort(ImethodAlgorithms):
 
             end -= 1
 
-            # Move from right to left
+            # Mover de derecha a izquierda
             swapped = False
             for i in range(end - 1, start - 1, -1):
                 if arr[i] > arr[i + 1]:
-                    self.swap(arr, i, i + 1)
+                    # Intercambio múltiple de Python
+                    arr[i], arr[i + 1] = arr[i + 1], arr[i]
                     swapped = True
 
             start += 1
-
-    @staticmethod
-    def swap(arr, i, j):
-        temp = arr[i]
-        arr[i] = arr[j]
-        arr[j] = temp

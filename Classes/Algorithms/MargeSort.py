@@ -3,13 +3,13 @@ from Interfaces.Algorithms.ImethodAlgorithms import ImethodAlgorithms
 
 class MergeSort(ImethodAlgorithms):
     def __init__(self):
-        pass
+        self.iterations = 0
 
     def sort(self, arr):
-        self.merge_sort(arr)
+        self.iterations = 0  # Reset iterations count
+        self.merge_sort(arr, 0)
 
-    @staticmethod
-    def merge_sort(arr):
+    def merge_sort(self, arr, depth):
         if len(arr) < 2:
             return
 
@@ -17,12 +17,11 @@ class MergeSort(ImethodAlgorithms):
         left = arr[:mid]
         right = arr[mid:]
 
-        MergeSort.merge_sort(left)
-        MergeSort.merge_sort(right)
-        MergeSort.merge(arr, left, right)
+        self.merge_sort(left, depth + 1)
+        self.merge_sort(right, depth + 1)
+        self.merge(arr, left, right, depth)
 
-    @staticmethod
-    def merge(arr, left, right):
+    def merge(self, arr, left, right, depth):
         i = j = k = 0
 
         while i < len(left) and j < len(right):
@@ -43,3 +42,9 @@ class MergeSort(ImethodAlgorithms):
             arr[k] = right[j]
             j += 1
             k += 1
+
+        self.print_iteration(arr, depth)
+
+    def print_iteration(self, arr, depth):
+        print(f"Iteration {self.iterations} (Depth {depth}): {arr}")
+        self.iterations += 1

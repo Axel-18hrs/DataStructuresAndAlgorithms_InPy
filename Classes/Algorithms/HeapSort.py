@@ -3,22 +3,30 @@ from Interfaces.Algorithms.ImethodAlgorithms import ImethodAlgorithms
 
 class HeapSort(ImethodAlgorithms):
     def __init__(self):
-        pass
+        self.iterations = 0
+        self.swaps = 0
 
     def sort(self, arr):
         n = len(arr)
 
-        # Construir un heap (montículo) máximo
+        # Build a max heap
         for i in range(n // 2 - 1, -1, -1):
             self.heapify(arr, n, i)
 
-        # Extraer elementos uno por uno del heap
+        # Extract elements one by one from the heap
         for i in range(n - 1, 0, -1):
-            # Mover la raíz actual al final
+            # Swap the root (max element) with the last element
             arr[0], arr[i] = arr[i], arr[0]
+            self.swaps += 1
+            self.iterations += 1
+            print(arr)
 
-            # Llamar a heapify en el subárbol reducido
+            # Call heapify on the reduced heap
             self.heapify(arr, i, 0)
+
+        # Print the number of iterations and swaps
+        print(f'Number of iterations: {self.iterations}')
+        print(f'Number of swaps: {self.swaps}')
 
     @staticmethod
     def heapify(arr, n, i):
@@ -26,18 +34,18 @@ class HeapSort(ImethodAlgorithms):
         left = 2 * i + 1
         right = 2 * i + 2
 
-        # Comparar con el hijo izquierdo
+        # Compare with the left child
         if left < n and arr[left] > arr[largest]:
             largest = left
 
-        # Comparar con el hijo derecho
+        # Compare with the right child
         if right < n and arr[right] > arr[largest]:
             largest = right
 
-        # Si el mayor no es la raíz
+        # If the largest is not the root
         if largest != i:
-            # Intercambio múltiple de Python
+            # Python's multiple assignment for swapping
             arr[i], arr[largest] = arr[largest], arr[i]
 
-            # Recursivamente heapify el subárbol afectado
+            # Recursively heapify the affected subtree
             HeapSort.heapify(arr, n, largest)

@@ -41,7 +41,9 @@ class OperationsAlgorithm:
             except ValueError:
                 OperationsAlgorithm.deffault()
                 continue
-
+            if isinstance(algorithm, CountingSort) or isinstance(algorithm, RadixSort) and minon < 0:
+                input("Only values greater than or equal to zero are accepted.")
+                continue
             if isinstance(algorithm, BucketSort):
                 arr = OperationsAlgorithm.generar_vector_double(minon, length, values)
             else:

@@ -1,9 +1,9 @@
 from Interfaces.Algorithms.ImethodAlgorithms import ImethodAlgorithms
 
-
 class CountingSort(ImethodAlgorithms):
     def __init__(self):
-        pass
+        self.iterations = 0
+        self.exchanges = 0
 
     def sort(self, arr):
         n = len(arr)
@@ -27,10 +27,19 @@ class CountingSort(ImethodAlgorithms):
         for i in range(n - 1, -1, -1):
             output[count[arr[i]] - 1] = arr[i]
             count[arr[i]] -= 1
+            self.iterations += 1
+            self.exchanges += 1
+
+            # Print the array after each exchange
+            print(output)
 
         # Copiar el arreglo de salida de vuelta al arreglo original
         for i in range(n):
             arr[i] = output[i]
+
+        # Print the number of iterations and exchanges
+        print(f'Number of iterations: {self.iterations}')
+        print(f'Number of swaps: {self.exchanges}')
 
     @staticmethod
     def find_max(arr):

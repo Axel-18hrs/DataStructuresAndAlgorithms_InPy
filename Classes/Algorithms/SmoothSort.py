@@ -4,6 +4,7 @@ from Interfaces.Algorithms.ImethodAlgorithms import ImethodAlgorithms
 class SmoothSort(ImethodAlgorithms):
     def __init__(self):
         self.heap = []
+        self.iterations = 0
 
     def sort(self, arr):
         self.heap = arr
@@ -11,10 +12,12 @@ class SmoothSort(ImethodAlgorithms):
 
         for i in range((n-1)//2, -1, -1):
             self.sift_down(i, n - 1)
+            self.iterations += 1
 
         for i in range(n - 1, 0, -1):
             self.swap(0, i)
             self.sift_down(0, i - 1)
+            self.iterations += 1
 
     def sift_down(self, root, end):
         left_child = 2 * root + 1

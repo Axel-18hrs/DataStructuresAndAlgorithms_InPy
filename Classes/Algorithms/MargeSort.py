@@ -4,10 +4,13 @@ from Interfaces.Algorithms.ImethodAlgorithms import ImethodAlgorithms
 class MergeSort(ImethodAlgorithms):
     def __init__(self):
         self.iterations = 0
+        self.recursions = 0
 
     def sort(self, arr):
         self.iterations = 0  # Reset iterations count
         self.merge_sort(arr, 0)
+        print(f'Number of iterations: {self.iterations}')
+        print(f'Number of recursions: {self.recursions}')
 
     def merge_sort(self, arr, depth):
         if len(arr) < 2:
@@ -23,8 +26,11 @@ class MergeSort(ImethodAlgorithms):
 
     def merge(self, arr, left, right, depth):
         i = j = k = 0
+        self.recursions += 1
 
         while i < len(left) and j < len(right):
+            self.iterations += 1
+            print(arr)
             if left[i] <= right[j]:
                 arr[k] = left[i]
                 i += 1
@@ -34,17 +40,17 @@ class MergeSort(ImethodAlgorithms):
             k += 1
 
         while i < len(left):
+            self.iterations += 1
+            print(arr)
             arr[k] = left[i]
             i += 1
             k += 1
 
         while j < len(right):
+            self.iterations += 1
+            print(arr)
             arr[k] = right[j]
             j += 1
             k += 1
 
-        self.print_iteration(arr, depth)
 
-    def print_iteration(self, arr, depth):
-        print(f"Iteration {self.iterations} (Depth {depth}): {arr}")
-        self.iterations += 1

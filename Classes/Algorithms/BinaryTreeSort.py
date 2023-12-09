@@ -1,18 +1,19 @@
 from Interfaces.Algorithms.ImethodAlgorithms import ImethodAlgorithms
 
 
-class BinarytreeNode:
-    def __init__(self, value):
-        self.value = value
-        self.left = None
-        self.right = None
-
-
 class BinaryTreeSort(ImethodAlgorithms):
     def __init__(self):
         self.root = None
+        self.iterations = 0
+
+    class Node:
+        def __init__(self, value):
+            self.value = value
+            self.left = None
+            self.right = None
 
     def sort(self, arr):
+        print("\nStart of Binary Tree Sort algorithm:")
         # Build the binary tree
         for value in arr:
             self.root = self._insert(self.root, value)
@@ -21,9 +22,12 @@ class BinaryTreeSort(ImethodAlgorithms):
         index = [0]  # Using a list to simulate a mutable integer (Python doesn't have ref)
         self._in_order_traversal(self.root, arr, index)
 
+        print("\nEnd of Binary Tree Sort algorithm.")
+        print(f"Number of iterations: {self.iterations}")
+
     def _insert(self, node, value):
         if node is None:
-            return BinarytreeNode(value)
+            return self.Node(value)
 
         if value < node.value:
             node.left = self._insert(node.left, value)
@@ -37,4 +41,6 @@ class BinaryTreeSort(ImethodAlgorithms):
             self._in_order_traversal(node.left, arr, index)
             arr[index[0]] = node.value
             index[0] += 1
+            print(arr)
+            self.iterations += 1
             self._in_order_traversal(node.right, arr, index)
